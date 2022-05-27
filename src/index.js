@@ -1,10 +1,10 @@
-import fs from 'fs';
 import _ from 'lodash';
 import getFixturePath from '../utils/getFixturePath.js';
+import dataParsers from '../utils/parsers.js';
 
 export default (file1, file2) => {
-  const data1 = JSON.parse(fs.readFileSync(getFixturePath(file1), 'utf8'));
-  const data2 = JSON.parse(fs.readFileSync(getFixturePath(file2), 'utf8'));
+  const data1 = dataParsers(getFixturePath(file1), 'utf8');
+  const data2 = dataParsers(getFixturePath(file2), 'utf8');
   const sortedKeys = _.sortBy(_.union(_.keys(data1), _.keys(data2)));
 
   const result = ['{'];
