@@ -1,27 +1,14 @@
-import _ from 'lodash';
-import getFixturePath from '../utils/getFixturePath.js';
-import dataParsers from '../utils/parsers.js';
+import getFixturePath from './utils/getFixturePath.js';
+import dataParsers from './utils/parsers.js';
+import stylish from './formatter/stylish.js';
+import buildAST from './buildAST.js';
 
-export default (file1, file2) => {
+const gendiff = (file1, file2) => {
   const data1 = dataParsers(getFixturePath(file1), 'utf8');
   const data2 = dataParsers(getFixturePath(file2), 'utf8');
-  const sortedKeys = _.sortBy(_.union(_.keys(data1), _.keys(data2)));
-
-  const result = ['{'];
-  // eslint-disable-next-line no-restricted-syntax
-  for (const key of sortedKeys) {
-    if (!Object.hasOwn(data1, key)) {
-      result.push(`  + ${key}: ${data2[key]}`);
-    } else if (!Object.hasOwn(data2, key)) {
-      result.push(`  - ${key}: ${data1[key]}`);
-    } else if (data1[key] !== data2[key]) {
-      result.push(`  - ${key}: ${data1[key]}`);
-      result.push(`  + ${key}: ${data2[key]}`);
-    } else {
-      result.push(`    ${key}: ${data1[key]}`);
-    }
-  }
-  result.push('}');
-
-  return result.join('\n');
+  const unionTree = buildAST(data1, data2);
+  console.log(unionTree);
+  return stylish(unionTree);
 };
+
+export default gendiff;
