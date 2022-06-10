@@ -10,6 +10,7 @@ programm
   .arguments('<filepath1> <filepath2>')
   .option('-f, --format <type>', 'output format', 'stylish')
   .option('-p, --format <type>', 'plain')
+  .option('-j, --format <type>', 'json')
   .action((file1, file2) => {
     console.log(gendiff(file1, file2, programm.opts().format));
   });

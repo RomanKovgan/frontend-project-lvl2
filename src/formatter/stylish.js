@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import _ from 'lodash';
 
 const getIndent = (depth, replaser = ' ', spaceCount = 4) => replaser.repeat(depth * spaceCount - 2);
@@ -15,6 +16,7 @@ const stringify = (value, depth) => {
 };
 
 const stylish = (diffTree) => {
+  // eslint-disable-next-line array-callback-return
   const iter = (tree, depth) => tree.map((node) => {
     switch (node.type) {
       case 'nested':

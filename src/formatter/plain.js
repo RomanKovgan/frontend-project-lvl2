@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import _ from 'lodash';
 
 const printValue = (data) => {
@@ -11,6 +12,7 @@ const printValue = (data) => {
 };
 
 const plain = (diffTree) => {
+  // eslint-disable-next-line consistent-return
   const iter = (tree, fullPath) => tree.flatMap((node) => {
     const currentPath = fullPath.slice(0);
     currentPath.push(node.key);
