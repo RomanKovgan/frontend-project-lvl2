@@ -8,10 +8,10 @@ const buildAST = (data1, data2) => {
     if (_.isObject(value1) && _.isObject(value2)) {
       return { type: 'nested', key, children: buildAST(value1, value2) };
     }
-    if (!Object.hasOwn(data1, key)) {
+    if (!_.has(data1, key)) {
       return { type: 'added', key, newValue: value2 };
     }
-    if (!Object.hasOwn(data2, key)) {
+    if (!_.has(data2, key)) {
       return { type: 'removed', key, oldValue: value1 };
     }
     if (!_.isEqual(value1, value2)) {
