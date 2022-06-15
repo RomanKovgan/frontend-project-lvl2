@@ -16,5 +16,5 @@ $ make install
 ```sh
 make test
 ```
-## Demonstration
-[![asciicast](https://asciinema.org/a/afsXdk8Dh28K0kUJ3lt8tZLfa)](https://asciinema.org/a/afsXdk8Dh28K0kUJ3lt8tZLfa)
+## Demonstration gendiff
+[![gendiff](https://asciinema.org/a/afsXdk8Dh28K0kUJ3lt8tZLfa.svg)](https://asciinema.org/a/afsXdk8Dh28K0kUJ3lt8tZLfa)
