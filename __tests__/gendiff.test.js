@@ -3,7 +3,7 @@ import buildAST from '../src/buildAST.js';
 import stylish from '../src/formatter/stylish.js';
 import plain from '../src/formatter/plain.js';
 import json from '../src/formatter/json.js';
-import getFixturePath from '../src/utils/getFixturePath.js';
+import { getFixturePath } from '../src/utils/getFixturePath.js';
 import dataParse from '../src/utils/parsers.js';
 
 const resultStylish = fs.readFileSync('__fixtures__/expectedStylish.txt', 'utf8');

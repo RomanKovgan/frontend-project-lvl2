@@ -1,1 +1,1 @@
-export default (difTree) => JSON.stringify(difTree.flat());
+export default (difTree) => JSON.stringify(difTree);
