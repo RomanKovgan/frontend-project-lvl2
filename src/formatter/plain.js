@@ -14,8 +14,7 @@ const printValue = (data) => {
 const plain = (diffTree) => {
   // eslint-disable-next-line consistent-return
   const iter = (tree, fullPath) => tree.flatMap((node) => {
-    const currentPath = fullPath.slice(0);
-    currentPath.push(node.key);
+    const currentPath = [...fullPath, node.key];
     const path = currentPath.join('.');
     switch (node.type) {
       case 'nested':

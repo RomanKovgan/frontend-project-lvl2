@@ -10,13 +10,13 @@ const getExtension = (filename) => {
 const dataParse = (filename) => {
   const format = getExtension(filename);
   const data = fs.readFileSync(filename);
-  let parse;
   if (format === '.json' || format === '') {
-    parse = JSON.parse;
-  } else if (format === '.yml' || format === '.yaml') {
-    parse = yaml.load;
+    return JSON.parse(data);
   }
-  return parse(data);
+  if (format === '.yml' || format === '.yaml') {
+    return yaml.load(data);
+  }
+  throw new Error(`Invalid file extension type: '${format}'! Try supported file formats.`);
 };
 
 export default dataParse;
