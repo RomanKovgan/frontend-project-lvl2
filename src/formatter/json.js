@@ -1,1 +1,2 @@
-export default (difTree) => JSON.stringify(difTree);
+const json = (difTree) => JSON.stringify(difTree);
+export default json;

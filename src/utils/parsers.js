@@ -1,22 +1,17 @@
 import fs from 'fs';
-import path from 'path';
 import yaml from 'js-yaml';
+import { getFormat } from './utils.js';
 
-const getExtension = (filename) => {
-  const dataParse = path.extname(filename).toLowerCase();
-  return dataParse;
-};
-
-const dataParse = (filename) => {
-  const format = getExtension(filename);
+const parser = (filename) => {
+  const format = getFormat(filename).slice(1);
   const data = fs.readFileSync(filename);
-  if (format === '.json' || format === '') {
+  if (format === 'json' || format === '') {
     return JSON.parse(data);
   }
-  if (format === '.yml' || format === '.yaml') {
+  if (format === 'yml' || format === 'yaml') {
     return yaml.load(data);
   }
   throw new Error(`Invalid file extension type: '${format}'! Try supported file formats.`);
 };
 
-export default dataParse;
+export default parser;

@@ -12,7 +12,6 @@ const printValue = (data) => {
 };
 
 const plain = (diffTree) => {
-  // eslint-disable-next-line consistent-return
   const iter = (tree, fullPath) => tree.flatMap((node) => {
     const currentPath = [...fullPath, node.key];
     const path = currentPath.join('.');
@@ -26,11 +25,12 @@ const plain = (diffTree) => {
       case 'changed':
         return `Property '${path}' was updated. From ${printValue(node.oldValue)} to ${printValue(node.newValue)}`;
       case 'unchanged':
-        break;
+        return undefined;
       default:
-        console.log('error');
+        throw new Error('Unknown type!');
     }
-  }).filter((item) => item !== undefined).join('\n');
+  }).filter((item) => item !== undefined)
+    .join('\n');
   return iter(diffTree, []);
 };
 export default plain;

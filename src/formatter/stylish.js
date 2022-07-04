@@ -16,7 +16,6 @@ const stringify = (value, depth) => {
 };
 
 const stylish = (diffTree) => {
-  // eslint-disable-next-line array-callback-return
   const iter = (tree, depth) => tree.map((node) => {
     switch (node.type) {
       case 'nested':
@@ -33,7 +32,7 @@ const stylish = (diffTree) => {
       case 'unchanged':
         return `${getIndent(depth)}  ${node.key}: ${stringify(node.oldValue, depth + 1)}`;
       default:
-        console.log('error');
+        throw new Error('Unknown type!');
     }
   }).join('\n');
   return ['{', iter(diffTree, 1), '}'].join('\n');
