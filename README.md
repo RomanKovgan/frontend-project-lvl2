@@ -1,4 +1,4 @@
-#Gendiff.js
+# Gendiff.js
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/RomanKovgan/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/RomanKovgan/frontend-project-lvl2/actions)
 
@@ -9,8 +9,7 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f07250e5fb236b3c2965/test_coverage)](https://codeclimate.com/github/RomanKovgan/frontend-project-lvl2/test_coverage)
 
 ## GenDiff
-GenDiff - программа, которая показывает разницу между двумя структурами данных, которая поддерживает два формата: json и yaml.
-Для установки необхожимо:
+GenDiff - программа, которая показывает разницу между двумя структурами данных, которая поддерживает два формата: json и yaml.Для установки необхожимо:
 1. Node.js v >= 14;
 2. Склонировать репозиторий локально;
 
@@ -22,6 +21,19 @@ $ make install
 ```sh
 make test
 ```
+
+### Вычислять различия можно с помощью команды
+```shell
+$ gendiff [options] pathToFile1 pathToFile2
+```
+Options:
+- -V, --version                        output the version number
+- -f, --format [stylish, plain, json]  output format (default: "stylish")
+- -h, --help                           display help for command
+
+  [type] - stylish, plain, json
+
+  <'pathToFile'> - путь к файлу. можно указывать относительный и абсолютный путь
 
 ## Flat files JSON
 [![asciicast](https://asciinema.org/a/Xda1xoyJtjAGJvlM0T8K60CAA.svg)](https://asciinema.org/a/Xda1xoyJtjAGJvlM0T8K60CAA)
