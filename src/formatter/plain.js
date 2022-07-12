@@ -1,7 +1,6 @@
-/* eslint-disable array-callback-return */
 import _ from 'lodash';
 
-const printValue = (data) => {
+const getValue = (data) => {
   if (_.isObject(data)) {
     return '[complex value]';
   }
@@ -19,11 +18,11 @@ const plain = (diffTree) => {
       case 'nested':
         return iter(node.children, currentPath);
       case 'added':
-        return `Property '${path}' was added with value: ${printValue(node.newValue)}`;
+        return `Property '${path}' was added with value: ${getValue(node.newValue)}`;
       case 'removed':
         return `Property '${path}' was removed`;
       case 'changed':
-        return `Property '${path}' was updated. From ${printValue(node.oldValue)} to ${printValue(node.newValue)}`;
+        return `Property '${path}' was updated. From ${getValue(node.oldValue)} to ${getValue(node.newValue)}`;
       case 'unchanged':
         return undefined;
       default:

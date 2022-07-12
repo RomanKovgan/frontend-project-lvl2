@@ -1,13 +1,12 @@
-import { getFilePath } from './utils/utils.js';
-import dataParsers from './utils/parsers.js';
+import readFile from './utils/parsers.js';
 import buildAST from './buildAST.js';
-import getVisual from './formatter/index.js';
+import getFormat from './formatter/index.js';
 
 const genDiff = (filepath1, filepath2, format = 'stylish') => {
-  const data1 = dataParsers(getFilePath(filepath1), 'utf8');
-  const data2 = dataParsers(getFilePath(filepath2), 'utf8');
+  const data1 = readFile(filepath1);
+  const data2 = readFile(filepath2);
   const tree = buildAST(data1, data2);
-  const formatTree = getVisual(tree, format);
+  const formatTree = getFormat(tree, format);
   return (formatTree);
 };
 

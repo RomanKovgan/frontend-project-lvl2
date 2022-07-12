@@ -1,6 +1,6 @@
 import fs from 'fs';
 import yaml from 'js-yaml';
-import { getFormat } from './utils.js';
+import { getFormat, getFilePath } from './utils.js';
 
 const parser = (filename) => {
   const format = getFormat(filename).slice(1);
@@ -14,4 +14,6 @@ const parser = (filename) => {
   throw new Error(`Invalid file extension type: '${format}'! Try supported file formats.`);
 };
 
-export default parser;
+const readFile = (filepath) => parser(getFilePath(filepath), 'utf8');
+
+export default readFile;
