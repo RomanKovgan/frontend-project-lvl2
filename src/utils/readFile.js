@@ -1,11 +1,6 @@
 import fs from 'fs';
-import { getFormat, getFilePath } from './utils.js';
-import parser from './parsers.js';
+import { getFilePath } from './utils.js';
 
-const readFile = (filepath) => {
-  const format = getFormat(filepath).slice(1);
-  const data = fs.readFileSync(getFilePath(filepath), 'utf-8');
-  return parser(data, format);
-};
+const readFile = (filepath) => fs.readFileSync(getFilePath(filepath), 'utf-8');
 
 export default readFile;
